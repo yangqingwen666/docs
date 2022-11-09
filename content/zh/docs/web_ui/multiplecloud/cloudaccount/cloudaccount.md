@@ -1089,7 +1089,7 @@ $ kubectl rollout restart deployment -n kube-system coredns
 2. 选择云平台为HCSO，单击 **_"下一步：配置云账号"_** 按钮，进入配置云账号页面。
 3. 配置以下参数：
     - 名称：HCSO账号的名称。
-    - 密钥ID/密码：通过Access Key验证方式对接HCSO平台，Access Key由密钥ID（Access Key ID）和密码（Access Key Secret）组成。具体请参考[HCSO相关参数获取方式](#HCSO相关参数获取方式)
+    - 密钥ID/密码：通过Access Key验证方式对接HCSO平台，Access Key由密钥ID（Access Key ID）和密码（Access Key Secret）组成。具体请参考[HCSO相关参数获取方式](#hcso相关参数获取方式)
     - 默认区域/端点(Endpoint))域名：以地址iam.cn-north-1.test.com为例. 其中`iam`指统一身份认证服务,`cn-north-1`指端点区域,`test.com`即端点(Endpoint)域名。
     - 统一认证服务端点/弹性云服务器端点/虚拟私有云端点/镜像服务端点/云硬盘端点/分布式缓存端点/弹性负载均衡端点/对象存储服务端点/关系型数据库端点/NAT网关端点/云审计服务端点/监控服务端点/企业项目端点/文件系统（SFS Turbo）端点：选填，通过API使用资源时，需要指定对应的终端节点，请向企业管理员获取终端节点信息。
     - 子网DNS：设置环境中的子网默认DNS地址，最多可以设置两个，请使用英文','隔开.例如： 10.125.0.26,10.125.0.27。
@@ -1114,6 +1114,37 @@ $ kubectl rollout restart deployment -n kube-system coredns
 
 3. 通过验证后，会下载credentials名称的Excel表格，打开表格后即可获取密钥ID（Access Key ID）和密码（Secret Access Key）。
     ![](../../../../faq/image/faq_account_huawei_3.png)
+
+### 新建HCS账号
+
+该功能用于纳管HCS账号。
+
+1. 在云账号页面单击列表上方 **_"新建"_** 按钮，进入新建云账号页面。
+2. 选择云平台为HCS，单击 **_"下一步：配置云账号"_** 按钮，进入配置云账号页面。
+3. 配置以下参数：
+    - 名称：HCS云账号的名称。
+    - 备注：HCS云账号的备注。
+    - 密钥ID/密码：通过Access Key验证方式对接HCS平台，Access Key由密钥ID（Access Key ID）和密码（Access Key Secret）组成。具体请参考[HCS相关参数获取方式](#hcs相关参数获取方式)。
+    - 认证地址：。
+    - 资源归属项目：选择将云账号上的资源同步到{{<oem_name>}}平台的本地项目。
+    - 代理：当云账号需要代理才可以正常访问时设置该项，留空代表直连。如没有合适的代理，直接单击“新建”超链接，在弹出的新建代理对话框中设置相关参数，创建代理。
+    - 只读模式：开启后，该云账号只会进行同步资源操作，无法进行其他任务操作，如新建、删除或修改等。
+4. 单击 **_"连接测试"_** 按钮，测试输入的参数是否正确。
+5. 测试成功后，单击 **_"下一步：定时同步任务设置（可选）"_** 按钮，进入定时同步任务设置页面配置云账号的同步任务使得云账号自动同步行为更加可控。定时同步任务设置页面选填，如不需要在{{<oem_name>}}平台设置自动同步任务，可直接单击 **_"跳过"_** 按钮。如需要在{{<oem_name>}}平台中设置云账号自动同步的时间，请配置相关参数，配置完成且测试成功后，单击 **_"确定"_** 按钮，创建HCS账号。
+
+#### HCS相关参数获取方式
+
+##### HCS获取AccessKey
+
+1. 登录HCS控制台，鼠标悬停在右上角用户处，选择下拉菜单 **_"个人设置"_** 菜单项，进入个人设置页面。
+
+    ![](../../../images/multiplecloud/hcsaksk.png)
+2. 单击基本信息下方 **_"管理访问密钥"_** 菜单，在管理访问密钥页面单击 **_"新增访问密钥"_** 按钮。
+
+    ![](../../../images/multiplecloud/hcsaddaksk.png)
+
+3. 单击 **_"新增访问密钥"_** 按钮后，生成的访问密钥文件会下载到本地（csv文件），打开后即可获取密钥ID（Access Key ID）和密码（Secret Access Key）。
+    ![](../../../images/multiplecloud/hcsbelongaksk.png)
 
 ### 新建Cloudpods云账号
 
